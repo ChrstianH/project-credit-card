@@ -1,10 +1,11 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;}
 
 body {
-  margin: 0;
-  display: flex;
+  margin: 20px;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -13,15 +14,30 @@ h1 {
 }
 
 form{
+  width: 85%;
+  height: auto;
+  padding: 30px;
+  border: 1px solid gray;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  display: flex;
+  
 
 }
 
 .creditCardOutput{
+  display: flex;
+  flex-wrap: wrap;
  
 }
 
 .creditCard{
-
+  background-image: url(https://picsum.photos/id/329/650/400);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: fill;
+  width: 600px;
+  height: 350px;
 }
 
 p{
@@ -46,5 +62,5 @@ p{
 }
 
 button{
-  
+
 }
