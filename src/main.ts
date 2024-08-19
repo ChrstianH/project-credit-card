@@ -11,13 +11,24 @@ const expirationDate = document.getElementById(
 expirationDate.setAttribute("min", "2024-08");
 const cvv = document.getElementById("cvv") as HTMLInputElement;
 
-formElement.addEvebtlistener("click", (event: Event) => {
+formElement.addEventListener("click", (event: Event) => {
   event.preventDefault();
-  const newCreditCard: CreditCard = new CreditCard(
-    cardNumber.value,
-    cardHolder.value,
-    expirationDate.value,
-    cvv.value
-  );
-  creditCards.push(newCreditCard);
+  if (dataValid()) {
+    const newCreditCard: CreditCard = new CreditCard(
+      cardNumber.value,
+      cardHolder.value,
+      expirationDate.value,
+      cvv.value
+    );
+    creditCards.push(newCreditCard);
+  }
 });
+
+function dataValid(): boolean {
+  if (cardNumber.value.length !== 16 || isNaN(Number(cardNumber.value))) {
+    return false;
+  } else if (cvv.value.length !== 3 || isNaN(Number(cvv.value))) {
+    return false;
+  }
+  return true;
+}
