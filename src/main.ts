@@ -26,8 +26,10 @@ formElement.addEventListener("click", (event: Event) => {
 
 function dataValid(): boolean {
   if (cardNumber.value.length !== 16 || isNaN(Number(cardNumber.value))) {
+    window.alert("Die Kartennummer ist nicht korrekt.");
     return false;
   } else if (cvv.value.length !== 3 || isNaN(Number(cvv.value))) {
+    window.alert("Die Kartennummer ist nicht korrekt.");
     return false;
   }
   return true;
