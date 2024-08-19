@@ -8,6 +8,8 @@ const cardHolder = document.getElementById("cardHolder") as HTMLInputElement;
 const expirationDate = document.getElementById(
   "expirationDate"
 ) as HTMLInputElement;
+const outputFeld = document.getElementById("creditCardOutput") as HTMLElement;
+
 expirationDate.setAttribute("min", "2024-08");
 const cvv = document.getElementById("cvv") as HTMLInputElement;
 
@@ -21,6 +23,8 @@ formElement.addEventListener("submit", (event: Event) => {
       cvv.value
     );
     creditCards.push(newCreditCard);
+    outputFeld.innerHTML = "";
+    displayCreditCards();
   }
 });
 
@@ -34,4 +38,34 @@ function dataValid(): boolean {
     return false;
   }
   return true;
+}
+function displayCreditCards() {
+  creditCards.forEach((creditCard: CreditCard) => {
+    //!_____ Ab hier Create Credite Card in HTML_____ -> Output
+    //# Div Card
+    const newCardDiv = document.createElement("div") as HTMLDivElement;
+    newCardDiv.className = "creditCard";
+
+    outputFeld.appendChild(newCardDiv);
+    //# Card number im div
+    const cardNumberOutput = document.createElement(
+      "b"
+    ) as HTMLParagraphElement;
+    cardNumberOutput.textContent = creditCard._cardNumber;
+    cardNumberOutput.className = "NumberOutput";
+    newCardDiv.appendChild(cardNumberOutput);
+    //# Card holder im div
+    const cardHolderOutput = document.createElement(
+      "p"
+    ) as HTMLParagraphElement;
+    cardHolderOutput.textContent = creditCard._cardHolder;
+    cardHolderOutput.className = "HolderOutput";
+    newCardDiv.appendChild(cardHolderOutput);
+    //# Card Date im div
+    const cardDateOutput = document.createElement("p") as HTMLParagraphElement;
+    cardDateOutput.textContent = creditCard._expiryDate;
+    cardDateOutput.className = "DateOutput";
+    newCardDiv.appendChild(cardDateOutput);
+    //!______Ende Create Credit Card in HTML_______ -> Output
+  });
 }
