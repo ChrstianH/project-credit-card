@@ -11,7 +11,7 @@ const expirationDate = document.getElementById(
 expirationDate.setAttribute("min", "2024-08");
 const cvv = document.getElementById("cvv") as HTMLInputElement;
 
-formElement.addEventListener("click", (event: Event) => {
+formElement.addEventListener("submit", (event: Event) => {
   event.preventDefault();
   if (dataValid()) {
     const newCreditCard: CreditCard = new CreditCard(
@@ -26,6 +26,7 @@ formElement.addEventListener("click", (event: Event) => {
 
 function dataValid(): boolean {
   if (cardNumber.value.length !== 16 || isNaN(Number(cardNumber.value))) {
+    console.log(cardNumber.value);
     window.alert("Die Kartennummer ist nicht korrekt.");
     return false;
   } else if (cvv.value.length !== 3 || isNaN(Number(cvv.value))) {
