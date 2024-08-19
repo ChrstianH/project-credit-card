@@ -1,12 +1,3 @@
-
-function validateCardNumber(cardNumber: string): boolean {
-    return cardNumber.length === 16 && !isNaN(Number(cardNumber));
-}
-
-function validateCvvNumber(cvvNumber: string): boolean {
-  return cvvNumber.length === 3 && !isNaN(Number(cvvNumber))
-}
-
 import CreditCard from "./classes/CreditCard";
 
 const creditCards: CreditCard[] = [];
@@ -20,14 +11,27 @@ const expirationDate = document.getElementById(
 expirationDate.setAttribute("min", "2024-08");
 const cvv = document.getElementById("cvv") as HTMLInputElement;
 
-formElement.addEvebtlistener("click", (event: Event) => {
+formElement.addEventListener("submit", (event: Event) => {
   event.preventDefault();
-  const newCreditCard: CreditCard = new CreditCard(
-    cardNumber.value,
-    cardHolder.value,
-    expirationDate.value,
-    cvv.value
-  );
-  creditCards.push(newCreditCard);
+  if (dataValid()) {
+    const newCreditCard: CreditCard = new CreditCard(
+      cardNumber.value,
+      cardHolder.value,
+      expirationDate.value,
+      cvv.value
+    );
+    creditCards.push(newCreditCard);
+  }
 });
 
+function dataValid(): boolean {
+  if (cardNumber.value.length !== 16 || isNaN(Number(cardNumber.value))) {
+    console.log(cardNumber.value);
+    window.alert("Die Kartennummer ist nicht korrekt.");
+    return false;
+  } else if (cvv.value.length !== 3 || isNaN(Number(cvv.value))) {
+    window.alert("Die Kartennummer ist nicht korrekt.");
+    return false;
+  }
+  return true;
+}
