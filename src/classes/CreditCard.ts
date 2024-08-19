@@ -1,13 +1,13 @@
 class CreditCard {
   _cardNumber: string;
   _cardHolder: string;
-  _expiryDate: Date;
+  _expiryDate: string;
   _cvv: string;
 
   constructor(
     cardNumber: string,
     cardHolder: string,
-    expiryDate: Date,
+    expiryDate: string,
     cvv: string
   ) {
     this._cardNumber = cardNumber;
