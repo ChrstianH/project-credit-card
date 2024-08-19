@@ -16,8 +16,35 @@ form{
 
 }
 
-.credit_card{
+.creditCardOutput{
+ 
+}
+
+.creditCard{
+
+}
+
+p{
 
 }
 
 
+#cardNumber{
+
+}
+
+#cardHolder{
+
+}
+
+#expirationDate{
+
+}
+
+#cvv{
+
+}
+
+button{
+  
+}
