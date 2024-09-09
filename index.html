@@ -8,10 +8,22 @@
   </head>
   <body>
     <form id="cardInfoForm">
-      <input type="text" name="" id="cardNumber" placeholder="Kartennummer" />
-      <input type="text" name="" id="cardHolder" placeholder="Kartennutzer" />
-      <input type="month" name="" id="expirationDate" min="2024-08" />
-      <input type="text" name="" id="cvv" placeholder="CVV-nummer" />
+      <input
+        type="text"
+        name=""
+        id="cardNumber"
+        placeholder="Kartennummer"
+        required
+      />
+      <input
+        type="text"
+        name=""
+        id="cardHolder"
+        placeholder="Kartennutzer"
+        required
+      />
+      <input type="month" name="" id="expirationDate" min="2024-08" required />
+      <input type="text" name="" id="cvv" placeholder="CVV-nummer" required />
       <button type="submit">Submit</button>
     </form>
     <div id="creditCardOutput"></div>

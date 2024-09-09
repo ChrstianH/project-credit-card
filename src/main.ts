@@ -10,7 +10,7 @@ const expirationDate = document.getElementById(
 ) as HTMLInputElement;
 const outputFeld = document.getElementById("creditCardOutput") as HTMLElement;
 
-expirationDate.setAttribute("min", "2024-08");
+expirationDate.setAttribute("min", "2024-09");
 const cvv = document.getElementById("cvv") as HTMLInputElement;
 
 formElement.addEventListener("submit", (event: Event) => {
@@ -34,7 +34,7 @@ function dataValid(): boolean {
     window.alert("Die Kartennummer ist nicht korrekt.");
     return false;
   } else if (cvv.value.length !== 3 || isNaN(Number(cvv.value))) {
-    window.alert("Die Kartennummer ist nicht korrekt.");
+    window.alert("Die CVV ist nicht korrekt.");
     return false;
   }
   return true;
@@ -51,20 +51,30 @@ function displayCreditCards() {
     const cardNumberOutput = document.createElement(
       "b"
     ) as HTMLParagraphElement;
-    cardNumberOutput.textContent = creditCard._cardNumber;
-    cardNumberOutput.className = "NumberOutput";
+    cardNumberOutput.textContent = `${creditCard._cardNumber.substring(
+      0,
+      4
+    )} ${creditCard._cardNumber.substring(
+      4,
+      8
+    )} ${creditCard._cardNumber.substring(
+      8,
+      12
+    )} ${creditCard._cardNumber.substring(12, 16)}`;
+
+    cardNumberOutput.className = "numberOutput";
     newCardDiv.appendChild(cardNumberOutput);
     //# Card holder im div
     const cardHolderOutput = document.createElement(
       "p"
     ) as HTMLParagraphElement;
     cardHolderOutput.textContent = creditCard._cardHolder;
-    cardHolderOutput.className = "HolderOutput";
+    cardHolderOutput.className = "holderOutput";
     newCardDiv.appendChild(cardHolderOutput);
     //# Card Date im div
     const cardDateOutput = document.createElement("p") as HTMLParagraphElement;
     cardDateOutput.textContent = creditCard._expiryDate;
-    cardDateOutput.className = "DateOutput";
+    cardDateOutput.className = "dateOutput";
     newCardDiv.appendChild(cardDateOutput);
     //!______Ende Create Credit Card in HTML_______ -> Output
   });
